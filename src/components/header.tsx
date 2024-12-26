@@ -6,7 +6,7 @@ export default function Header() {
       <div className="container mx-auto px-4 py-6">
         <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-y-0 sm:gap-6">
           <Image
-            src="/BUET_LOGO.svg"
+            src="/logo.jpeg"
             alt="BUET Logo"
             width={80}
             height={80}
