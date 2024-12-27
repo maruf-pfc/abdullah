@@ -2,178 +2,290 @@ import Header from "@/components/header";
 import Navigation from "@/components/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  FaLinkedin,
+  FaGithub,
+  FaResearchgate,
+  FaGoogle,
+  FaEnvelope,
+  FaPhone,
+  FaFileAlt,
+  FaGraduationCap,
+  FaTrophy,
+  FaLanguage,
+  FaCertificate,
+  FaUserTie,
+} from "react-icons/fa";
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-[#f0ffd7]">
       <Header />
-      <div className="flex-1 flex md:flex-row">
+      <div className="flex-1 flex flex-col md:flex-row">
         <Navigation />
-        <main className="flex-1 p-4 md:p-8">
-          <div className="space-y-8">
-            <div className="flex flex-col md:flex-row gap-8">
-              <div className="w-full md:w-[300px]">
+        <main className="flex-1 p-4 md:p-8 overflow-y-auto">
+          <div className="max-w-4xl mx-auto space-y-8">
+            <section className="bg-white rounded-lg shadow-md p-6 flex flex-col md:flex-row gap-8">
+              <div className="w-full md:w-1/3">
                 <Image
                   src="/abdullah.jpg"
-                  alt="Faculty Photo"
+                  alt="Muhammad Abdullah"
                   width={300}
                   height={400}
-                  className="w-full"
+                  className="w-full rounded-lg"
                 />
                 <div className="mt-4 text-center">
-                  <h2 className="text-xl font-bold">Muhammad Abdullah</h2>
-                  <p className="italic">Ph.D., CEA, FBSME, FIEB</p>
-                  <p className="font-bold mt-2">Professor & Dean</p>
-                  <p>Mechanical Engineering</p>
-                  <p>BUET, Dhaka-1000, Bangladesh</p>
-
-                  <div className="mt-4 text-left">
-                    <p>
-                      Email:{" "}
-                      <Link
-                        href="mailto:zahurul@me.buet.ac.bd"
-                        className="text-blue-600"
-                      >
-                        abdullah@me.buet.ac.bd
-                      </Link>
-                    </p>
-                    <p className="mt-1">Phone: +880 1798250510</p>
+                  <h1 className="text-2xl font-bold text-[#8B0000]">
+                    Muhammad Abdullah
+                  </h1>
+                  <p className="text-lg text-gray-600">Adjunct Lecturer</p>
+                  <p className="text-sm text-gray-500">
+                    Department of Mechanical Engineering
+                  </p>
+                  <p className="text-sm text-gray-500">
+                    BUET, Dhaka-1000, Bangladesh
+                  </p>
+                </div>
+                <div className="mt-4 space-y-2">
+                  <div className="flex items-center">
+                    <FaEnvelope className="text-[#8B0000] mr-2" />
+                    <Link
+                      href="mailto:abdullah1810037@gmail.com"
+                      className="text-[#8B0000] hover:underline"
+                    >
+                      abdullah1810037@gmail.com
+                    </Link>
                   </div>
-
-                  <div className="mt-4 text-left">
-                    <p className="font-bold mb-2">Profiles:</p>
-                    <ul className="space-y-1">
-                      <li>
-                        <Link href="#" className="text-blue-600">
-                          BUET Research profile
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="#" className="text-blue-600">
-                          Google Scholar profile
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="#" className="text-blue-600">
-                          Scopus profile
-                        </Link>
-                      </li>
-                    </ul>
+                  <div className="flex items-center">
+                    <FaPhone className="text-[#8B0000] mr-2" />
+                    <a href="tel:+8801521707828" className="hover:underline">
+                      +880 1521707828
+                    </a>
                   </div>
-
-                  <div className="mt-4">
-                    <Link href="#" className="text-blue-600">
-                      Short CV
+                  <div className="flex items-center">
+                    <FaFileAlt className="text-[#8B0000] mr-2" />
+                    <Link
+                      href="https://docs.google.com/file/d/1cJvvlDo9BJJLOQ1v0zcVs-exFzutvdDc/edit?usp=docslist_api&filetype=msword"
+                      className="text-[#8B0000] hover:underline"
+                      download={true}
+                    >
+                      Curriculum Vitae
                     </Link>
                   </div>
                 </div>
+                <div className="mt-4 flex justify-center space-x-4">
+                  <Link
+                    href="https://www.linkedin.com/in/muhammad-abdullah-19b729200"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                  >
+                    <FaLinkedin className="text-2xl text-[#8B0000] hover:text-[#A80000]" />
+                  </Link>
+                  <Link
+                    href="https://github.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                  >
+                    <FaGithub className="text-2xl text-[#8B0000] hover:text-[#A80000]" />
+                  </Link>
+                  <Link
+                    href="https://www.researchgate.net/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="ResearchGate"
+                  >
+                    <FaResearchgate className="text-2xl text-[#8B0000] hover:text-[#A80000]" />
+                  </Link>
+                  <Link
+                    href="https://scholar.google.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Google Scholar"
+                  >
+                    <FaGoogle className="text-2xl text-[#8B0000] hover:text-[#A80000]" />
+                  </Link>
+                </div>
               </div>
-
-              <div className="flex-1">
-                <section className="mb-6">
-                  <h2 className="text-lg font-bold text-blue-900 mb-2">
-                    Research/Professional Interests
-                  </h2>
-                  <ul className="list-disc pl-8 space-y-1">
-                    <li>
-                      Thermodynamics, Energy conversion, conservation and
-                      optimization
-                    </li>
-                    <li>Thermal system design</li>
-                    <li>Combustion and Engines</li>
-                    <li>Mechatronics and Experimental techniques</li>
-                    <li>Refrigeration and Air-conditioning (HVAC)</li>
-                  </ul>
-                </section>
-
-                <section className="mb-6">
-                  <h2 className="text-lg font-bold text-blue-900 mb-2">
-                    Education
-                  </h2>
-                  <ul className="list-disc pl-8 space-y-1">
-                    <li>
-                      B.Sc. Engg. (Mech), Bangladesh University of Engineering &
-                      Technology (BUET), Dhaka, Bangladesh (1993)
-                    </li>
-                    <li>
-                      M.Sc. Engg. (Mech), Bangladesh University of Engineering &
-                      Technology (BUET), Dhaka, Bangladesh (1995)
-                    </li>
-                    <li>Ph.D. The University of Leeds, Leeds, UK (1998)</li>
-                  </ul>
-                </section>
-
-                <section className="mb-6">
-                  <h2 className="text-lg font-bold text-blue-900 mb-2">
-                    Current Positions
-                  </h2>
-                  <ul className="list-disc pl-8 space-y-1">
-                    <li>
-                      2024 - Dean, Mechanical Engineering, Bangladesh University
-                      of Engineering and Technology
-                    </li>
-                    <li>
-                      2004 - Professor, Department of Mechanical Engineering,
-                      Bangladesh University of Engineering and Technology
-                    </li>
-                    <li>
-                      2010 - Member, Board of Directors, Bangladesh Diesel Plant
-                      Ltd. (A Commercial Enterprise of Bangladesh Army)
-                    </li>
-                    <li>
-                      2015 - Member, Technical Advisory Committee for
-                      Sustainable Finance Dept. (Green Banking Wing), Bangladesh
-                      Bank
-                    </li>
-                    <li>
-                      2015 - Member, Energy Management Advisory Committee
-                      (EMAC), Sustainable & Renewable Energy Development
-                      Authority (SREDA), Ministry of Power, Energy and Mineral
-                      Resources, Bangladesh
-                    </li>
-                    <li>
-                      2021 - Member, Technical Advisory Committee (TAC), Energy
-                      Efficiency and Conservation Promotion Financing Project,
-                      SREDA, Ministry of Power, Energy and Mineral Resources,
-                      Bangladesh
-                    </li>
-                  </ul>
-                </section>
-
+              <div className="w-full md:w-2/3 space-y-6">
                 <section>
-                  <h2 className="text-lg font-bold text-blue-900 mb-2">
-                    Additional/Past Affiliations
+                  <h2 className="text-xl font-bold text-[#8B0000] mb-2 flex items-center">
+                    <FaUserTie className="mr-2" /> Career Objective
                   </h2>
-                  <ul className="list-disc pl-8 space-y-1">
-                    <li>
-                      Feb, 2014 - Feb, 2016: Head, Dept. of Mechanical
-                      Engineering, BUET
-                    </li>
-                    <li>
-                      Feb, 2013 - Aug, 2014: Director, Centre for Energy
-                      Studies, BUET
-                    </li>
-                    <li>Sep, 2008 - Apr, 2010: Provost, Titumir Hall, BUET</li>
-                    <li>
-                      Nov, 2003 - Nov, 2005: System Analyst, Computer Centre,
-                      BUET
-                    </li>
-                    <li>
-                      Dec, 2008 - May, 2010: Member, Board of Directors,
-                      Rupantarita Praktik Gas Co. Ltd. (RPGCL)
-                    </li>
-                    <li>
-                      May, 2007 - 2015: Member, Project Management Board,
-                      Haripur Gas Turbine Power Station
-                    </li>
-                    <li>
-                      Jan, 2012 - Dec, 2015: Chairman, Prog. by Committee,
-                      Bangladesh Standards & Testing Institution (BSTI)
-                    </li>
-                  </ul>
+                  <p className="text-gray-700">
+                    To establish a successful career in the academic sectors by
+                    leveraging my strong Mechanical Engineering skills,
+                    analytical mindset, and passion for applying knowledge for
+                    academic expansion. I am eager to contribute to the teaching
+                    and research activities within the department of Mechanical
+                    Engineering.
+                  </p>
+                </section>
+                <section>
+                  <h2 className="text-xl font-bold text-[#8B0000] mb-2 flex items-center">
+                    <FaUserTie className="mr-2" /> Current Position
+                  </h2>
+                  <div className="pl-6">
+                    <p className="font-semibold">Adjunct Lecturer</p>
+                    <p>Department of Mechanical Engineering,</p>
+                    <p>
+                      Bangladesh University of Engineering and Technology
+                      (BUET), Dhaka-1000
+                    </p>
+                    <p className="text-gray-600">August 2024 - Present</p>
+                  </div>
                 </section>
               </div>
-            </div>
+            </section>
+
+            <section className="bg-white rounded-lg shadow-md p-6">
+              <h2 className="text-xl font-bold text-[#8B0000] mb-4 flex items-center">
+                <FaGraduationCap className="mr-2" /> Education
+              </h2>
+              <ul className="space-y-4">
+                <li>
+                  <h3 className="font-semibold">
+                    Master of Science in Mechanical Engineering
+                  </h3>
+                  <p>
+                    Bangladesh University of Engineering and Technology (BUET),
+                    Dhaka, Bangladesh
+                  </p>
+                  <p className="text-gray-600">September 2024 - Present</p>
+                </li>
+                <li>
+                  <h3 className="font-semibold">
+                    Bachelor of Science in Mechanical Engineering
+                  </h3>
+                  <p>
+                    Bangladesh University of Engineering and Technology (BUET),
+                    Dhaka, Bangladesh
+                  </p>
+                  <p className="text-gray-600">April 2019 - July 2024</p>
+                  <ul className="list-disc pl-6 mt-1">
+                    <li>CGPA: 3.98/4.00</li>
+                    <li>Merit position: 2/180</li>
+                  </ul>
+                </li>
+                <li>
+                  <h3 className="font-semibold">
+                    Higher Secondary Certificate (Science)
+                  </h3>
+                  <p>Dhaka City College, Dhaka - 2018</p>
+                  <p>GPA: 5.00/5.00</p>
+                </li>
+                <li>
+                  <h3 className="font-semibold">
+                    Secondary School Certificate (Science)
+                  </h3>
+                  <p>Rasullahbad U.A. Khan High School - 2016</p>
+                  <p>GPA: 5.00/5.00</p>
+                </li>
+              </ul>
+            </section>
+
+            <section className="bg-white rounded-lg shadow-md p-6">
+              <h2 className="text-xl font-bold text-[#8B0000] mb-4 flex items-center">
+                <FaTrophy className="mr-2" /> Achievements
+              </h2>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>
+                  Recipient, Dean's list award for 4 levels (January 2019, July
+                  2021, January 2022, January 2023) From Bangladesh University
+                  of Engineering and Technology.
+                </li>
+                <li>
+                  Recipient, University merit award for seven consecutive
+                  semesters (January 2019, January 2020, January 2021, July
+                  2021, January 2022, July 2022, January 2023) from Bangladesh
+                  University of Engineering and Technology.
+                </li>
+                <li>
+                  Recipient, Board-General scholarship in the Secondary School
+                  Certificate (SSC-2016) examination under Comilla Board.
+                </li>
+              </ul>
+            </section>
+
+            <section className="bg-white rounded-lg shadow-md p-6">
+              <h2 className="text-xl font-bold text-[#8B0000] mb-4 flex items-center">
+                <FaCertificate className="mr-2" /> Skills and Certification
+              </h2>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>
+                  Certified in Short Course on Research Skill Development
+                  organized by Director of Continuing Education (DCE), BUET.
+                </li>
+                <li>
+                  COMSOL Multiphysics: Expertise in simulating using COMSOL
+                  Multiphysics.
+                </li>
+                <li>MATLAB: Certified by Mathworks.</li>
+                <li>
+                  CAD software: Proficient in using AutoCAD and SolidWorks for
+                  designing.
+                </li>
+                <li>
+                  MS Office: Prolific knowledge about Microsoft Word, Excel and
+                  PowerPoint.
+                </li>
+                <li>
+                  Adobe Illustrator: Intermediate knowledge of illustrator for
+                  designing.
+                </li>
+              </ul>
+            </section>
+
+            <section className="bg-white rounded-lg shadow-md p-6">
+              <h2 className="text-xl font-bold text-[#8B0000] mb-4 flex items-center">
+                <FaLanguage className="mr-2" /> Language Proficiency
+              </h2>
+              <p>
+                Mother Tongue: Bengali. Fluent in Bengali and full working
+                knowledge of English.
+              </p>
+            </section>
+
+            <section className="bg-white rounded-lg shadow-md p-6">
+              <h2 className="text-xl font-bold text-[#8B0000] mb-4 flex items-center">
+                <FaUserTie className="mr-2" /> References
+              </h2>
+              <ul className="space-y-4">
+                <li>
+                  <h3 className="font-semibold">Dr. Mohammad Nasim Hasan</h3>
+                  <p>
+                    Professor, Department of Mechanical Engineering, BUET,
+                    Dhaka-1000
+                  </p>
+                  <p>
+                    Email:{" "}
+                    <a
+                      href="mailto:nasim@me.buet.ac.bd"
+                      className="text-[#8B0000] hover:underline"
+                    >
+                      nasim@me.buet.ac.bd
+                    </a>
+                  </p>
+                </li>
+                <li>
+                  <h3 className="font-semibold">Dr. Mohammad Jane Alam Khan</h3>
+                  <p>
+                    Assistant Professor, Department of Mechanical Engineering,
+                    BUET, Dhaka-1000
+                  </p>
+                  <p>
+                    Email:{" "}
+                    <a
+                      href="mailto:ronin@me.buet.ac.bd"
+                      className="text-[#8B0000] hover:underline"
+                    >
+                      ronin@me.buet.ac.bd
+                    </a>
+                  </p>
+                </li>
+              </ul>
+            </section>
           </div>
         </main>
       </div>

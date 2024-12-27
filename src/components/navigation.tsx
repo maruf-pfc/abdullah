@@ -7,8 +7,10 @@ import { cn } from "@/lib/utils";
 
 const links = [
   { name: "Home", href: "/" },
-  { name: "Publications & Presentations", href: "/publications" },
-  { name: "Theses/Projects & Courses", href: "/theses" },
+  { name: "Publications", href: "/publications" },
+  { name: "Thesis", href: "/thesis" },
+  { name: "Industrial Attachment", href: "/industrial-attachment" },
+  { name: "Projects", href: "/projects" },
 ];
 
 export default function Navigation() {
