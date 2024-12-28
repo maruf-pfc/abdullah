@@ -91,7 +91,7 @@ export default function Home() {
                     <FaGithub className="text-2xl text-[#8B0000] hover:text-[#A80000]" />
                   </Link>
                   <Link
-                    href="https://www.researchgate.net/"
+                    href="https://www.researchgate.net/profile/Muhammad-Abdullah-360"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="ResearchGate"
