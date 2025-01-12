@@ -17,6 +17,12 @@ import {
   FaUserTie,
 } from "react-icons/fa";
 
+export const metadata = {
+  title: "Muhammad Abdullah - BUET Faculty Profile",
+  description:
+    "Professional profile of Muhammad Abdullah, Adjunct Lecturer at Bangladesh University of Engineering and Technology (BUET). Explore his academic background, achievements, and research interests.",
+};
+
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-[#f0ffd7]">
@@ -24,7 +30,7 @@ export default function Home() {
       <div className="flex-1 flex flex-col md:flex-row">
         <Navigation />
         <main className="flex-1 p-4 md:p-8 overflow-y-auto">
-          <div className="max-w-4xl mx-auto space-y-8">
+          <article className="max-w-4xl mx-auto space-y-8">
             <section className="bg-white rounded-lg shadow-md p-6 flex flex-col md:flex-row gap-8">
               <div className="w-full md:w-1/3">
                 <Image
@@ -48,7 +54,10 @@ export default function Home() {
                 </div>
                 <div className="mt-4 space-y-2">
                   <div className="flex items-center">
-                    <FaEnvelope className="text-[#8B0000] mr-2" />
+                    <FaEnvelope
+                      className="text-[#8B0000] mr-2"
+                      aria-hidden="true"
+                    />
                     <Link
                       href="mailto:abdullah1810037@gmail.com"
                       className="text-[#8B0000] hover:underline"
@@ -57,13 +66,19 @@ export default function Home() {
                     </Link>
                   </div>
                   <div className="flex items-center">
-                    <FaPhone className="text-[#8B0000] mr-2" />
+                    <FaPhone
+                      className="text-[#8B0000] mr-2"
+                      aria-hidden="true"
+                    />
                     <a href="tel:+8801521707828" className="hover:underline">
                       +880 1521707828
                     </a>
                   </div>
                   <div className="flex items-center">
-                    <FaFileAlt className="text-[#8B0000] mr-2" />
+                    <FaFileAlt
+                      className="text-[#8B0000] mr-2"
+                      aria-hidden="true"
+                    />
                     <Link
                       href="https://docs.google.com/file/d/1cJvvlDo9BJJLOQ1v0zcVs-exFzutvdDc/edit?usp=docslist_api&filetype=msword"
                       className="text-[#8B0000] hover:underline"
@@ -78,7 +93,7 @@ export default function Home() {
                     href="https://www.linkedin.com/in/muhammad-abdullah-19b729200"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="LinkedIn"
+                    aria-label="LinkedIn Profile"
                   >
                     <FaLinkedin className="text-2xl text-[#8B0000] hover:text-[#A80000]" />
                   </Link>
@@ -86,7 +101,7 @@ export default function Home() {
                     href="https://github.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="GitHub"
+                    aria-label="GitHub Profile"
                   >
                     <FaGithub className="text-2xl text-[#8B0000] hover:text-[#A80000]" />
                   </Link>
@@ -94,7 +109,7 @@ export default function Home() {
                     href="https://www.researchgate.net/profile/Muhammad-Abdullah-360"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="ResearchGate"
+                    aria-label="ResearchGate Profile"
                   >
                     <FaResearchgate className="text-2xl text-[#8B0000] hover:text-[#A80000]" />
                   </Link>
@@ -102,7 +117,7 @@ export default function Home() {
                     href="https://scholar.google.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Google Scholar"
+                    aria-label="Google Scholar Profile"
                   >
                     <FaGoogle className="text-2xl text-[#8B0000] hover:text-[#A80000]" />
                   </Link>
@@ -111,7 +126,8 @@ export default function Home() {
               <div className="w-full md:w-2/3 space-y-6">
                 <section>
                   <h2 className="text-xl font-bold text-[#8B0000] mb-2 flex items-center">
-                    <FaUserTie className="mr-2" /> Career Objective
+                    <FaUserTie className="mr-2" aria-hidden="true" /> Career
+                    Objective
                   </h2>
                   <p className="text-gray-700">
                     To establish a successful career in the academic sectors by
@@ -124,7 +140,8 @@ export default function Home() {
                 </section>
                 <section>
                   <h2 className="text-xl font-bold text-[#8B0000] mb-2 flex items-center">
-                    <FaUserTie className="mr-2" /> Current Position
+                    <FaUserTie className="mr-2" aria-hidden="true" /> Current
+                    Position
                   </h2>
                   <div className="pl-6">
                     <p className="font-semibold">Adjunct Lecturer</p>
@@ -141,7 +158,8 @@ export default function Home() {
 
             <section className="bg-white rounded-lg shadow-md p-6">
               <h2 className="text-xl font-bold text-[#8B0000] mb-4 flex items-center">
-                <FaGraduationCap className="mr-2" /> Education
+                <FaGraduationCap className="mr-2" aria-hidden="true" />{" "}
+                Education
               </h2>
               <ul className="space-y-4">
                 <li>
@@ -187,7 +205,7 @@ export default function Home() {
 
             <section className="bg-white rounded-lg shadow-md p-6">
               <h2 className="text-xl font-bold text-[#8B0000] mb-4 flex items-center">
-                <FaTrophy className="mr-2" /> Achievements
+                <FaTrophy className="mr-2" aria-hidden="true" /> Achievements
               </h2>
               <ul className="list-disc pl-6 space-y-2">
                 <li>
@@ -210,7 +228,8 @@ export default function Home() {
 
             <section className="bg-white rounded-lg shadow-md p-6">
               <h2 className="text-xl font-bold text-[#8B0000] mb-4 flex items-center">
-                <FaCertificate className="mr-2" /> Skills and Certification
+                <FaCertificate className="mr-2" aria-hidden="true" /> Skills and
+                Certification
               </h2>
               <ul className="list-disc pl-6 space-y-2">
                 <li>
@@ -239,7 +258,8 @@ export default function Home() {
 
             <section className="bg-white rounded-lg shadow-md p-6">
               <h2 className="text-xl font-bold text-[#8B0000] mb-4 flex items-center">
-                <FaLanguage className="mr-2" /> Language Proficiency
+                <FaLanguage className="mr-2" aria-hidden="true" /> Language
+                Proficiency
               </h2>
               <p>
                 Mother Tongue: Bengali. Fluent in Bengali and full working
@@ -249,7 +269,7 @@ export default function Home() {
 
             <section className="bg-white rounded-lg shadow-md p-6">
               <h2 className="text-xl font-bold text-[#8B0000] mb-4 flex items-center">
-                <FaUserTie className="mr-2" /> References
+                <FaUserTie className="mr-2" aria-hidden="true" /> References
               </h2>
               <ul className="space-y-4">
                 <li>
@@ -286,7 +306,7 @@ export default function Home() {
                 </li>
               </ul>
             </section>
-          </div>
+          </article>
         </main>
       </div>
     </div>

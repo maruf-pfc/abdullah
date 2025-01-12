@@ -11,20 +11,19 @@ const links = [
   { name: "Thesis", href: "/thesis" },
   { name: "Industrial Attachment", href: "/industrial-attachment" },
   { name: "Projects", href: "/projects" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
-  // Close sidebar on route change
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
 
   return (
-    <>
-      {/* Overlay for Mobile */}
+    <nav aria-label="Main Navigation">
       {isOpen && (
         <div
           className="fixed inset-0 bg-black/50 z-40 md:hidden"
@@ -32,12 +31,13 @@ export default function Navigation() {
         />
       )}
 
-      {/* Hamburger Menu Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="fixed top-4 left-4 z-50 md:hidden text-white focus:outline-none"
         aria-label="Toggle menu"
+        aria-expanded={isOpen}
       >
+        <span className="sr-only">Menu</span>
         <div className="space-y-1">
           <span
             className={`block h-0.5 w-6 bg-white transform transition-transform duration-300 ${
@@ -57,7 +57,6 @@ export default function Navigation() {
         </div>
       </button>
 
-      {/* Sidebar Navigation */}
       <div
         className={cn(
           "fixed md:sticky top-0 left-0 z-50",
@@ -66,7 +65,7 @@ export default function Navigation() {
           isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
         )}
       >
-        <nav className="h-full flex flex-col">
+        <div className="h-full flex flex-col">
           <button
             onClick={() => setIsOpen(false)}
             className="self-end md:hidden text-white text-xl px-4 py-2"
@@ -86,13 +85,14 @@ export default function Navigation() {
                 pathname === link.href &&
                   "bg-[#750000] from-[#750000] to-[#750000]"
               )}
-              onClick={() => setIsOpen(false)} // Close menu on link click
+              onClick={() => setIsOpen(false)}
+              aria-current={pathname === link.href ? "page" : undefined}
             >
               {link.name}
             </Link>
           ))}
-        </nav>
+        </div>
       </div>
-    </>
+    </nav>
   );
 }

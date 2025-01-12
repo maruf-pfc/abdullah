@@ -1,6 +1,5 @@
 import Header from "@/components/header";
 import Navigation from "@/components/navigation";
-import Link from "next/link";
 import { FaBook } from "react-icons/fa";
 
 export default function Publications() {

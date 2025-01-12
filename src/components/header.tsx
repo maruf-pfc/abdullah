@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Header() {
   return (
-    <div className="relative w-full bg-[#8B0000]">
+    <header className="relative w-full bg-[#8B0000]">
       <div className="container mx-auto px-4 py-6">
         <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-y-0 sm:gap-6">
           <Image
@@ -22,6 +22,6 @@ export default function Header() {
           </div>
         </div>
       </div>
-    </div>
+    </header>
   );
 }
