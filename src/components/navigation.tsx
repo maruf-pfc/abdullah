@@ -65,7 +65,7 @@ export default function Navigation() {
           isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
         )}
       >
-        <div className="h-full flex flex-col">
+        <div className="h-screen flex flex-col bg-[#8B0000]">
           <button
             onClick={() => setIsOpen(false)}
             className="self-end md:hidden text-white text-xl px-4 py-2"
