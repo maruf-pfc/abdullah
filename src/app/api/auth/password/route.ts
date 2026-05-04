@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import connectToDatabase from "@/lib/db";
 import AdminUser from "@/models/AdminUser";
@@ -8,7 +8,7 @@ const JWT_SECRET = new TextEncoder().encode(
   process.env.JWT_SECRET || "super_secret_fallback_key_for_development"
 );
 
-export async function PUT(req: Request) {
+export async function PUT(req: NextRequest) {
   try {
     const token = req.cookies.get("admin_token")?.value;
     if (!token) {
