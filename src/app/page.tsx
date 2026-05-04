@@ -16,6 +16,8 @@ import {
   FaCertificate,
   FaUserTie,
 } from "react-icons/fa";
+import connectToDatabase from "@/lib/db";
+import Profile from "@/models/Profile";
 
 export const metadata = {
   title: "Muhammad Abdullah - BUET Faculty Profile",
@@ -23,7 +25,27 @@ export const metadata = {
     "Professional profile of Muhammad Abdullah, Adjunct Lecturer at Bangladesh University of Engineering and Technology (BUET). Explore his academic background, achievements, and research interests.",
 };
 
-export default function Home() {
+export default async function Home() {
+  await connectToDatabase();
+  let profile = await Profile.findOne({});
+  if (!profile) {
+    // default empty profile if none in DB
+    profile = {
+      careerObjective: "To establish a successful career...",
+      currentPosition: {
+        title: "Adjunct Lecturer",
+        department: "Department of Mechanical Engineering",
+        institution: "BUET, Dhaka-1000",
+        period: "August 2024 - Present",
+      },
+      educations: [],
+      achievements: [],
+      skills: [],
+      languages: "Bengali, English",
+      references: [],
+    };
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-[#f0ffd7]">
       <Header />
@@ -126,186 +148,64 @@ export default function Home() {
               <div className="w-full md:w-2/3 space-y-6">
                 <section>
                   <h2 className="text-xl font-bold text-[#8B0000] mb-2 flex items-center">
-                    <FaUserTie className="mr-2" aria-hidden="true" /> Career
-                    Objective
+                    <FaUserTie className="mr-2" aria-hidden="true" /> Career Objective
                   </h2>
-                  <p className="text-gray-700">
-                    To establish a successful career in the academic sectors by
-                    leveraging my strong Mechanical Engineering skills,
-                    analytical mindset, and passion for applying knowledge for
-                    academic expansion. I am eager to contribute to the teaching
-                    and research activities within the department of Mechanical
-                    Engineering.
+                  <p className="text-gray-700 whitespace-pre-wrap">
+                    {profile.careerObjective}
                   </p>
                 </section>
                 <section>
                   <h2 className="text-xl font-bold text-[#8B0000] mb-2 flex items-center">
-                    <FaUserTie className="mr-2" aria-hidden="true" /> Current
-                    Position
+                    <FaUserTie className="mr-2" aria-hidden="true" /> Current Position
                   </h2>
                   <div className="pl-6">
-                    <p className="font-semibold">Adjunct Lecturer</p>
-                    <p>Department of Mechanical Engineering,</p>
-                    <p>
-                      Bangladesh University of Engineering and Technology
-                      (BUET), Dhaka-1000
-                    </p>
-                    <p className="text-gray-600">August 2024 - Present</p>
+                    <p className="font-semibold">{profile.currentPosition?.title}</p>
+                    <p>{profile.currentPosition?.department}</p>
+                    <p>{profile.currentPosition?.institution}</p>
+                    <p className="text-gray-600">{profile.currentPosition?.period}</p>
                   </div>
                 </section>
               </div>
             </section>
 
-            <section className="bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-xl font-bold text-[#8B0000] mb-4 flex items-center">
-                <FaGraduationCap className="mr-2" aria-hidden="true" />{" "}
-                Education
-              </h2>
-              <ul className="space-y-4">
-                <li>
-                  <h3 className="font-semibold">
-                    Master of Science in Mechanical Engineering
-                  </h3>
-                  <p>
-                    Bangladesh University of Engineering and Technology (BUET),
-                    Dhaka, Bangladesh
-                  </p>
-                  <p className="text-gray-600">September 2024 - Present</p>
-                </li>
-                <li>
-                  <h3 className="font-semibold">
-                    Bachelor of Science in Mechanical Engineering
-                  </h3>
-                  <p>
-                    Bangladesh University of Engineering and Technology (BUET),
-                    Dhaka, Bangladesh
-                  </p>
-                  <p className="text-gray-600">April 2019 - July 2024</p>
-                  <ul className="list-disc pl-6 mt-1">
-                    <li>CGPA: 3.98/4.00</li>
-                    <li>Merit position: 2/180</li>
-                  </ul>
-                </li>
-                <li>
-                  <h3 className="font-semibold">
-                    Higher Secondary Certificate (Science)
-                  </h3>
-                  <p>Dhaka City College, Dhaka - 2018</p>
-                  <p>GPA: 5.00/5.00</p>
-                </li>
-                <li>
-                  <h3 className="font-semibold">
-                    Secondary School Certificate (Science)
-                  </h3>
-                  <p>Rasullahbad U.A. Khan High School - 2016</p>
-                  <p>GPA: 5.00/5.00</p>
-                </li>
-              </ul>
-            </section>
+            {/* In the previous page there was education, achievements etc. */}
+            {profile.achievements && profile.achievements.length > 0 && (
+              <section className="bg-white rounded-lg shadow-md p-6">
+                <h2 className="text-xl font-bold text-[#8B0000] mb-4 flex items-center">
+                  <FaTrophy className="mr-2" aria-hidden="true" /> Achievements
+                </h2>
+                <ul className="list-disc pl-6 space-y-2">
+                  {profile.achievements.map((ach: string, idx: number) => (
+                    <li key={idx}>{ach}</li>
+                  ))}
+                </ul>
+              </section>
+            )}
 
-            <section className="bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-xl font-bold text-[#8B0000] mb-4 flex items-center">
-                <FaTrophy className="mr-2" aria-hidden="true" /> Achievements
-              </h2>
-              <ul className="list-disc pl-6 space-y-2">
-                <li>
-                  Recipient, Dean's list award for 4 levels (January 2019, July
-                  2021, January 2022, January 2023) From Bangladesh University
-                  of Engineering and Technology.
-                </li>
-                <li>
-                  Recipient, University merit award for seven consecutive
-                  semesters (January 2019, January 2020, January 2021, July
-                  2021, January 2022, July 2022, January 2023) from Bangladesh
-                  University of Engineering and Technology.
-                </li>
-                <li>
-                  Recipient, Board-General scholarship in the Secondary School
-                  Certificate (SSC-2016) examination under Comilla Board.
-                </li>
-              </ul>
-            </section>
+            {profile.skills && profile.skills.length > 0 && (
+              <section className="bg-white rounded-lg shadow-md p-6">
+                <h2 className="text-xl font-bold text-[#8B0000] mb-4 flex items-center">
+                  <FaCertificate className="mr-2" aria-hidden="true" /> Skills and
+                  Certification
+                </h2>
+                <ul className="list-disc pl-6 space-y-2">
+                  {profile.skills.map((skill: string, idx: number) => (
+                    <li key={idx}>{skill}</li>
+                  ))}
+                </ul>
+              </section>
+            )}
 
-            <section className="bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-xl font-bold text-[#8B0000] mb-4 flex items-center">
-                <FaCertificate className="mr-2" aria-hidden="true" /> Skills and
-                Certification
-              </h2>
-              <ul className="list-disc pl-6 space-y-2">
-                <li>
-                  Certified in Short Course on Research Skill Development
-                  organized by Director of Continuing Education (DCE), BUET.
-                </li>
-                <li>
-                  COMSOL Multiphysics: Expertise in simulating using COMSOL
-                  Multiphysics.
-                </li>
-                <li>MATLAB: Certified by Mathworks.</li>
-                <li>
-                  CAD software: Proficient in using AutoCAD and SolidWorks for
-                  designing.
-                </li>
-                <li>
-                  MS Office: Prolific knowledge about Microsoft Word, Excel and
-                  PowerPoint.
-                </li>
-                <li>
-                  Adobe Illustrator: Intermediate knowledge of illustrator for
-                  designing.
-                </li>
-              </ul>
-            </section>
+            {profile.languages && (
+              <section className="bg-white rounded-lg shadow-md p-6">
+                <h2 className="text-xl font-bold text-[#8B0000] mb-4 flex items-center">
+                  <FaLanguage className="mr-2" aria-hidden="true" /> Language
+                  Proficiency
+                </h2>
+                <p>{profile.languages}</p>
+              </section>
+            )}
 
-            <section className="bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-xl font-bold text-[#8B0000] mb-4 flex items-center">
-                <FaLanguage className="mr-2" aria-hidden="true" /> Language
-                Proficiency
-              </h2>
-              <p>
-                Mother Tongue: Bengali. Fluent in Bengali and full working
-                knowledge of English.
-              </p>
-            </section>
-
-            <section className="bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-xl font-bold text-[#8B0000] mb-4 flex items-center">
-                <FaUserTie className="mr-2" aria-hidden="true" /> References
-              </h2>
-              <ul className="space-y-4">
-                <li>
-                  <h3 className="font-semibold">Dr. Mohammad Nasim Hasan</h3>
-                  <p>
-                    Professor, Department of Mechanical Engineering, BUET,
-                    Dhaka-1000
-                  </p>
-                  <p>
-                    Email:{" "}
-                    <a
-                      href="mailto:nasim@me.buet.ac.bd"
-                      className="text-[#8B0000] hover:underline"
-                    >
-                      nasim@me.buet.ac.bd
-                    </a>
-                  </p>
-                </li>
-                <li>
-                  <h3 className="font-semibold">Dr. Mohammad Jane Alam Khan</h3>
-                  <p>
-                    Assistant Professor, Department of Mechanical Engineering,
-                    BUET, Dhaka-1000
-                  </p>
-                  <p>
-                    Email:{" "}
-                    <a
-                      href="mailto:ronin@me.buet.ac.bd"
-                      className="text-[#8B0000] hover:underline"
-                    >
-                      ronin@me.buet.ac.bd
-                    </a>
-                  </p>
-                </li>
-              </ul>
-            </section>
           </article>
         </main>
       </div>
