@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import Header from "@/components/header";
 import Navigation from "@/components/navigation";
 import { FaGraduationCap, FaTools, FaFileAlt } from "react-icons/fa";

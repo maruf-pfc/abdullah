@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import Header from "@/components/header";
 import Navigation from "@/components/navigation";
 import { FaBookOpen, FaQuoteLeft } from "react-icons/fa";
