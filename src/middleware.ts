@@ -1,27 +1,35 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { jwtVerify } from 'jose'
 
-export function middleware(req: NextRequest) {
-  const basicAuth = req.headers.get('authorization')
+const JWT_SECRET = new TextEncoder().encode(
+  process.env.JWT_SECRET || "super_secret_fallback_key_for_development"
+);
+
+export async function middleware(req: NextRequest) {
   const url = req.nextUrl
 
   if (url.pathname.startsWith('/admin')) {
-    if (basicAuth) {
-      const authValue = basicAuth.split(' ')[1]
-      const [user, pwd] = atob(authValue).split(':')
-
-      if (user === process.env.ADMIN_EMAIL && pwd === process.env.ADMIN_PASS) {
-        return NextResponse.next()
-      }
+    // Exclude login page from middleware protection to avoid loop
+    if (url.pathname === '/admin/login') {
+      return NextResponse.next()
     }
-    
-    return new NextResponse('Auth required', {
-      status: 401,
-      headers: {
-        'WWW-Authenticate': 'Basic realm="Secure Area"',
-      },
-    })
+
+    const token = req.cookies.get("admin_token")?.value
+
+    if (!token) {
+      return NextResponse.redirect(new URL('/admin/login', req.url))
+    }
+
+    try {
+      await jwtVerify(token, JWT_SECRET)
+      return NextResponse.next()
+    } catch (err) {
+      return NextResponse.redirect(new URL('/admin/login', req.url))
+    }
   }
+
+  return NextResponse.next()
 }
 
 export const config = {
